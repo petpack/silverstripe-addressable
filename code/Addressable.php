@@ -53,7 +53,7 @@ class Addressable extends DataObjectDecorator {
 		));
 	}
 
-	public function updateCMSFields($fields) {
+	public function updateCMSFields(FieldSet &$fields) {
 		if ($fields->fieldByName('Root.Content')) {
 			$tab = 'Root.Content.Address';
 		} else {
@@ -63,7 +63,7 @@ class Addressable extends DataObjectDecorator {
 		$fields->addFieldsToTab($tab, $this->getAddressFields());
 	}
 
-	public function updateFrontEndFields($fields) {
+	public function updateFrontEndFields(FieldSet &$fields) {
 		foreach ($this->getAddressFields() as $field) $fields->push($field);
 	}
 
@@ -146,8 +146,8 @@ class Addressable extends DataObjectDecorator {
 	/**
 	 * Returns a static google map of the address, linking out to the address.
 	 *
-	 * @param  int $width
-	 * @param  int $height
+	 * @param  SS_Int $width
+	 * @param  SS_Int $height
 	 * @return string
 	 */
 	public function AddressMap($width, $height) {
@@ -171,7 +171,7 @@ class Addressable extends DataObjectDecorator {
 	/**
 	 * Returns TRUE if any of the address fields have changed.
 	 *
-	 * @param  int $level
+	 * @param  SS_Int $level
 	 * @return bool
 	 */
 	public function isAddressChanged($level = 1) {

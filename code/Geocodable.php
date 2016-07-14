@@ -28,12 +28,12 @@ class Geocodable extends DataObjectDecorator {
 		$this->owner->Lng = $point['lng'];
 	}
 
-	public function updateCMSFields($fields) {
+	public function updateCMSFields(FieldSet &$fields) {
 		$fields->removeByName('Lat');
 		$fields->removeByName('Lng');
 	}
 
-	public function updateFrontEndFields($fields) {
+	public function updateFrontEndFields(FieldSet &$fields) {
 		$this->updateCMSFields($fields);
 	}
 
